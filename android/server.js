@@ -4,6 +4,14 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 const path = require('path');
 
+const mongoose = require('mongoose');
+
+// Conexión a MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Conectado a MongoDB Atlas'))
+  .catch(err => console.error('❌ Error de conexión:', err));
+
+
 // Crea el servidor HTTP que atiende la app móvil y el monitor web.
 const app = express();
 // Permite elegir otro puerto para pruebas sin cambiar el puerto normal 3000.
